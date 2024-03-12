@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Routine Management</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Routine Management System!</h1>
+    <div class="course">
+        {% for course in courses %}
+        <div class="course-item">
+            <h4 class="course-code">{{course.course_code}}</h4>
+            <h4 class="course-title">{{course.course_title}}</h4>
+            <p>
+                <b>Course Credit:</b> {{course.course_credit}} Credits, &Tab;
+                <b>Credit-Hours:</b> {{course.course_class_time_per_week_in_hours}} hrs/week
+            </p>
+            <p>
+                <b>Course Contents:</b> <br>
+                {{course.course_contents}}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
