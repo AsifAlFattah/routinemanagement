@@ -1,0 +1,52 @@
+{% load static %}
+{% include "header.html" %}
+
+    <h3 class="my-5 text-primary">Courses:</h3>
+    <div class="container text-center">
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+            {% for course in courses %}
+            <div class="col">
+                <div>
+                    <!-- Button 1 -->
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModalCenter1">
+                        <h4>{{course.course_id}}</h4>
+                    </button> -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter{{ course.course_code }}">
+                        {{course.course_code}}
+                    </button>
+
+                 <!-- Modal 1 -->
+                 <div class="modal fade" id="exampleModalCenter{{ course.course_code }}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                       <div class="modal-content">
+                          <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLongTitle">
+                                {{course.course_code}} 
+                            </h5>
+                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </button>
+                          </div>
+                          <div class="modal-body ">
+                             <h4 style="text-align: left;margin-left: 5px;">Course Title: {{course.course_title}}</h4>
+                             <h5 style="text-align: left;margin-left: 5px;">Course Code: {{course.course_code}}</h5>
+                             <h5 style="text-align: left;margin-left: 5px;">Course Credit: {{course.course_credit}}</h5>
+                             <h5 style="text-align: left;margin-left: 5px;">Credit Hours: {{course.course_class_time_per_week_in_hours}} hrs per week</h5>
+                             <h5 style="text-align: left;margin-left: 5px;">Course Contents:</h5>
+                             <p style="text-align: left;margin-left: 5px; color: #000;">{{course.course_contents}}</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                </div>
+            </div>
+            {% endfor    %}
+        </div>
+    </div>
+    
+
+{% include "footer.html" %}

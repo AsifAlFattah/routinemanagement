@@ -1,0 +1,37 @@
+{% load static %}
+{% include "header.html" %}
+
+<div class="white_shd full margin_bottom_30 mt-5">
+    <div class="full graph_head">
+       <div class="heading1 margin_0">
+          <h2>Student Info (4 Year)</h2>
+       </div>
+    </div>
+    <div class="table_section padding_infor_info">
+       <div class="table-responsive-sm">
+          <table class="table table-hover">
+             <thead>
+                <tr >
+                   <th><b>Year</b></th>
+                   <th><b>Semester</b></th>
+                   <th><b>Section</b></th>
+                   <th><b>Number of Students</b></th>
+                </tr>
+             </thead>
+             <tbody>
+                {% for student in students %}
+                <tr>
+                   <td>{{student.year}}</td>
+                   <td>{{student.semester}}</td>
+                   <td>{{student.section}}</td>
+                   <td>{{student.number_of_students}}</td>
+                </tr>
+                {% endfor %}
+             </tbody>
+          </table>
+       </div>
+    </div>
+ </div>
+
+
+{% include "footer.html" %}

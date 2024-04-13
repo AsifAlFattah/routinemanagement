@@ -1,0 +1,119 @@
+{% load static %}
+{% include "header.html" %}
+
+        <!-- dashboard inner -->
+        <div class="midde_cont">
+            <div class="container-fluid">
+               
+               <!-- row -->
+               <div class="row column1">
+                  <div class="col-md-12">
+                     <div class="white_shd full margin_bottom_30">
+                        <div class="full graph_head">
+                           <div class="heading1 margin_0">
+                              <h2>Faculty Members:</h2>
+                           </div>
+                        </div>
+                        <div class="full price_table padding_infor_info">
+                           <div class="row">
+                            {% for member in faculty %}
+                              <!-- column contact --> 
+                              <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 profile_details margin_bottom_30">
+                                 <div class="contact_blog">
+                                    <h4 class="brief">{{member.designation}}</h4>
+                                    <div class="contact_inner">
+                                       <div class="left">
+                                          <h3>{{member.name}}</h3>
+                                          <p><strong>Dept: </strong>CSE</p>
+                                          <ul class="list-unstyled">
+                                             <li><i class="fa fa-envelope-o"></i> : {{member.email}}</li>
+                                             <li><i class="fa fa-phone"></i> : {{member.phone}}</li>
+                                             <li>Code Name: {{member.code_name}}</li>
+                                          </ul>
+                                       </div>
+                                       <div class="right">
+                                          <div class="profile_contacts">
+                                             <img class="img-responsive" src="images/layout_img/msg2.png" alt="#" />
+                                          </div>
+                                       </div>
+                                       
+                                       <div class="bottom_list">
+                                          
+                                          <div class="right_button">
+                                             <button type="button" class="btn btn-primary btn-xs">
+                                             <i class="fa fa-user"> </i> View Profile
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end column contact blog -->
+                              {% endfor %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- end row -->
+
+                   <!-- row -->
+               <div class="row column1">
+                <div class="col-md-12">
+                   <div class="white_shd full margin_bottom_30">
+                      <div class="full graph_head">
+                         <div class="heading1 margin_0">
+                            <h2>Adjunct/Guest Teachers:</h2>
+                         </div>
+                      </div>
+                      <div class="full price_table padding_infor_info">
+                         <div class="row">
+                          {% for member in guest %}
+                            <!-- column contact --> 
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 profile_details margin_bottom_30">
+                               <div class="contact_blog">
+                                  <h4 class="brief">{{member.designation}}</h4>
+                                  <div class="contact_inner">
+                                     <div class="left">
+                                        <h3>{{member.name}}</h3>
+                                        <ul class="list-unstyled">
+                                           <li><i class="fa fa-envelope-o"></i> : {{member.email}}</li>
+                                           <li><i class="fa fa-phone"></i> : {{member.phone}}</li>
+                                           <li>Code Name: {{member.code_name}}</li>
+                                        </ul>
+                                     </div>
+                                     <div class="right">
+                                        <div class="profile_contacts">
+                                           <img class="img-responsive" src="images/layout_img/msg2.png" alt="#" />
+                                        </div>
+                                     </div>
+                                     <div class="bottom_list">
+                                        
+                                        <div class="right_button">
+                                           
+                                           <button type="button" class="btn btn-primary btn-xs">
+                                           <i class="fa fa-user"> </i> View Profile
+                                           </button>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <!-- end column contact blog -->
+                            {% endfor %}
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- end row -->
+               </div>
+               <!-- footer -->
+               <div class="container-fluid">
+                  <div class="footer">
+                    <p>Copyright © Department of Computer Science and Engineering | NWU.
+                    </p>
+                  </div>
+               </div>
+            </div>
+            <!-- end dashboard inner -->
+
+{% include "footer.html" %}
