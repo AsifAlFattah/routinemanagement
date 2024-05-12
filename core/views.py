@@ -4,9 +4,9 @@ from .models import *
 # Create your views here.
 def index(request):
 
-    
+    username = request.user.username
 
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'username' : username})
 
 def courses(request):
     courses = Curriculam.objects.all()
@@ -23,3 +23,10 @@ def students(request):
     students = StudentInfo_BiSemester.objects.all()
 
     return render(request, 'students.html', {'students' : students})
+
+def profile(request):
+
+    username = request.user.username
+    useremail = request.user.email
+
+    return render(request, 'profile.html', {'username' : username, 'email' : useremail})

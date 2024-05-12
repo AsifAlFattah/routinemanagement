@@ -1,11 +1,33 @@
 from django.db import models
 
+class Semester(models.Model):
+
+    year = [
+        ('1st','1st'),
+        ('2nd','2nd'),
+        ('3rd','3rd'),
+        ('4th','4th')
+    ]
+    semester = [
+        ('1st','1st'),
+        ('2nd','2nd'),
+        ('3rd','3rd')
+    ]
+
+    year = models.CharField(max_length=50, choices=year)
+    semester = models.CharField(max_length=50, choices=semester)
+
+    def __str__(self):
+        return self.year+" Year "+self.semester+" Semester"
+
 class Curriculam(models.Model):
     course_code = models.CharField(max_length=10)
     course_title = models.CharField(max_length=100)
     course_credit = models.FloatField()
     course_class_time_per_week_in_hours = models.FloatField()
     course_contents = models.TextField()
+
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE, related_name='courses')
 
     def __str__(self):
         return self.course_code
