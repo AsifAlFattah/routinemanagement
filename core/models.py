@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 class Semester(models.Model):
 
@@ -67,13 +69,27 @@ class Curriculam_Diploma_Intake(models.Model):
 class FullSyllabus(models.Model):
     syllabus = models.FileField()
 
-class FacultyMember(models.Model):
+class Instructor(models.Model):
     designations = [
         ('H','Head'),
         ('P','Professor'),
+        ('AsP','Associate Professor'),
         ('AP','Assistant Professor'),
         ('SL','Senior Lecturer'),
-        ('L','Lecturer')
+        ('L','Lecturer'),
+        ('G','Guest')
+    ]
+    departments = [
+        ('CSE','CSE'),
+        ('EEE','EEE'),
+        ('CE','CE'),
+        ('BA','BA'),
+        ('Law','Law'),
+        ('ELL','ELL'),
+        ('DS','DS'),
+        ('Economics','Economics'),
+        ('Sociology','Sociology'),
+        ('PH','PH')
     ]
 
     name = models.CharField(max_length=80)
@@ -81,18 +97,19 @@ class FacultyMember(models.Model):
     email = models.EmailField(max_length=254)
     phone = models.CharField(max_length=15)
     designation = models.CharField(max_length=50, choices=designations)
+    department = models.CharField(max_length=50, choices=departments)
 
     def __str__(self):
         return self.name
 
-class AdjunctFaculty_and_GuestTeacher(models.Model):
-    name = models.CharField(max_length=80)
-    code_name = models.CharField(max_length=10)
-    email = models.EmailField(max_length=254)
-    phone = models.CharField(max_length=15)
+# class AdjunctFaculty_and_GuestTeacher(models.Model):
+#     name = models.CharField(max_length=80)
+#     code_name = models.CharField(max_length=10)
+#     email = models.EmailField(max_length=254)
+#     phone = models.CharField(max_length=15)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 class AllocatedRoom(models.Model):
     room_no = models.IntegerField()
@@ -172,3 +189,11 @@ class Room_Allocation_to_Diploma_Intake(models.Model):
     def __str__(self):
         return f"{self.semester}, Room: {self.room}"
     
+
+class Instructor_Allocation_Diploma_Intake(models.Model):
+
+    course = models.ForeignKey(Curriculam_Diploma_Intake,on_delete=models.CASCADE,related_name='instructorAllocation')
+    instructor = models.ForeignKey(Instructor,on_delete=models.CASCADE,related_name='instructorAllocation')
+
+    def __str__(self):
+        return f"{self.course} : {self.instructor}"
