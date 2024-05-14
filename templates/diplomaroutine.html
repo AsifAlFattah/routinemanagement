@@ -1,0 +1,83 @@
+{% load static %}
+{% include "header.html" %}
+
+    <!-- dashboard inner -->
+    <div class="midde_cont">
+                  
+        <!-- table section -->
+        <div class="col mt-5">
+            <div class="white_shd full margin_bottom_30">
+               <div class="full graph_head">
+                  <div class="heading3 margin_0">
+                     <h2>Class Routine of Diploma Intake</h2>
+                  </div>
+               </div>
+               <div class="table_section padding_infor_info">
+                  <div class="table-responsive-sm">
+                     <table class="table table-bordered" style="color: black;">
+                        <thead>
+                           <tr>
+                              <th rowspan="2">Batch</th>
+                              {% for classday in classdays %}
+                              <th colspan="{{ classday.slots.count }}">{{ classday.day }}</th>
+                              {% endfor %}
+                           </tr>
+                           <tr>
+                            {% for classday in classdays %}
+                                {% for slot in classday.slots.all %}
+                                    <th>{{ slot.starttime }} to {{ slot.endtime }}</th>
+                                {% endfor %}
+                            {% endfor %}
+                           </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1st Year 2nd Semester <br>
+                                    Room: {{ rooms.1st2nd }}
+                                </td>
+                            </tr>
+                           <tr>
+                              <td>2nd Year 1st Semester <br>
+                                Room: {{ rooms.2nd1st }}
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>2nd Year 2nd Semester <br>
+                                Room: {{ rooms.2nd2nd }}
+                              </td>
+                           </tr>
+                           <tr>
+                            <td>3rd Year 1st Semester <br>
+                                Room: {{ rooms.3rd1st }}
+                              </td>
+                         </tr>
+                         <tr>
+                            <td>3rd Year 2nd Semester <br>
+                                Room: {{ rooms.3rd2nd }}
+                              </td>
+                         </tr>
+                         <tr>
+                            <td>4th Year 1st Semester <br>
+                                Room: {{ rooms.4th1st }}
+                              </td>
+                         </tr>
+                         <tr>
+                            <td>4th Year 2nd Semester <br>
+                                Room: {{ rooms.4th2nd }}
+                              </td>
+                         </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- table section -->
+         
+
+        
+    </div>
+     <!-- end dashboard inner -->
+
+{% include "footer.html" %}
